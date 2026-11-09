@@ -1,0 +1,59 @@
+name: Fix Linux Observatory website URLs
+
+on:
+  push:
+    paths:
+      - .github/workflows/fix-site-domains.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  fix-domains:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Correct old domains across site files
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          old = ('https://linuxobservatory.netlify.app', 'https://linuxobservatory.neocities.org')
+          new = 'https://linuxobservatory.github.io'
+          extensions = {'.html', '.htm', '.xml', '.txt', '.md', '.json', '.jsonld', '.css', '.js', '.svg', '.webmanifest'}
+          changed = []
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or '.git' in path.parts or path.suffix.lower() not in extensions:
+                  continue
+              try:
+                  source = path.read_text(encoding='utf-8')
+              except (UnicodeError, OSError):
+                  continue
+              updated = source
+              for domain in old:
+                  updated = updated.replace(domain, new)
+              if updated != source:
+                  path.write_text(updated, encoding='utf-8')
+                  changed.append(str(path))
+          print('Updated:', ', '.join(changed) if changed else 'No outdated URLs found')
+          PY
+      - name: Commit and push fixes
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Correct canonical and website domain references"
+            git push origin HEAD:main
+            echo "Requesting GitHub Pages rebuild..."
+            curl -fsS -X POST \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${{ github.repository }}/pages/builds" \
+              || echo "Pages rebuild request was unavailable; check Settings > Pages."
+          else
+            echo "Already correct; no changes needed."
+          fi
