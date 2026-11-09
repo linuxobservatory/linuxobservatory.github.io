@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b0c">
+<meta name="description" content="Why an experimental 16K or 32K game render is useful to observe, even when it is far too demanding for regular gameplay.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://linuxobservatory.netlify.app/learn/extreme-resolution/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Linux Observatory">
+<meta property="og:title" content="What happens beyond 4K on Linux? | Linux Observatory">
+<meta property="og:description" content="Why an experimental 16K or 32K game render is useful to observe, even when it is far too demanding for regular gameplay.">
+<meta property="og:url" content="https://linuxobservatory.netlify.app/learn/extreme-resolution/">
+<meta property="og:image" content="https://linuxobservatory.netlify.app/assets/og-image.png">
+<meta property="og:image:alt" content="Linux Observatory: Linux gaming under observation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What happens beyond 4K on Linux? | Linux Observatory">
+<meta name="twitter:description" content="Why an experimental 16K or 32K game render is useful to observe, even when it is far too demanding for regular gameplay.">
+<title>What happens beyond 4K on Linux? | Linux Observatory</title>
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>@media(max-width:1100px){.mobile-nav[hidden]{display:grid}.nav-toggle{display:none}}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "name": "What happens beyond 4K on Linux? | Linux Observatory", "description": "Why an experimental 16K or 32K game render is useful to observe, even when it is far too demanding for regular gameplay.", "url": "https://linuxobservatory.netlify.app/learn/extreme-resolution/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "Linux Observatory", "url": "https://linuxobservatory.netlify.app/"}, "author": {"@type": "Person", "name": "Ediz Iniziel"}}</script>
+</head>
+<body class="page-learn-extreme-resolution">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="utility-rail"><div class="shell rail-inside"><span><span class="pulse" aria-hidden="true"></span> INDEPENDENT FIELD OBSERVATIONS <span class="rail-slash">/</span> LINUX GAMING</span><span class="rail-right">COPENHAGEN · OPERATED BY EDIZ INIZIEL</span></div></div>
+<header class="site-header"><div class="shell header-inner">
+<a class="brand-lockup" href="/" aria-label="Linux Observatory homepage"><span class="brand-mark" aria-hidden="true">L<span>O</span><i></i></span><span class="brand-wordmark">LINUX<br>OBSERVATORY</span></a>
+<nav aria-label="Primary navigation" class="primary-nav">
+<a href="/start-here/" >Start here</a>
+<a href="/observations/" >Observations</a>
+<a href="/methodology/" >Method</a>
+<a href="/graphics-stack/" >Graphics stack</a>
+<a href="/learn/" >Learn</a>
+</nav>
+<a class="header-watch" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">View footage <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens YouTube in a new tab)</span></a>
+<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div><nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+<a href="/start-here/">Start here</a><a href="/observations/">Observations</a><a href="/methodology/">Methodology</a><a href="/graphics-stack/">Graphics stack</a><a href="/learn/">Learn</a><a href="/test-environment/">Test environment</a><a href="/about/">About</a><a href="/faq/">FAQ</a>
+</nav></header>
+<main id="main"><section class="article-hero"><div class="shell"><div class="breadcrumbs"><a href="/">HOME</a><span>/</span><a href="/learn/">FIELD GUIDES</a><span>/</span>EXTREME EXPERIMENTS</div><div class="eyebrow">FIELD GUIDE / EXTREME EXPERIMENTS</div><h1>What happens beyond 4K on Linux?</h1><p class="lead">Why an experimental 16K or 32K game render is useful to observe, even when it is far too demanding for regular gameplay.</p><div class="article-byline">LINUX OBSERVATORY · <span>EXPLANATORY GUIDE</span> · UPDATED NOVEMBER 2026 · NO BENCHMARK DATA USED</div></div></section><section class="section-tight"><div class="shell article-layout"><article class="prose"><p class="lead">If your monitor is 4K, how could a game be tested at 8K, 16K or an even larger resolution? And why would someone deliberately make a game run at only a few frames per second?</p>
+<h2 id="pixels">First, count the pixels.</h2>
+<p>At 4K UHD, a frame is 3,840 pixels wide and 2,160 pixels tall. That is 8,294,400 pixels. A typical 8K UHD frame uses four times as many pixels. A 15,360 × 8,640 target, commonly described as 16K in the project’s test context, uses sixteen times as many pixels as 4K UHD.</p>
+<p>The operator has explored an even larger target of 32,768 × 18,432—about 604 million pixels per frame. That's approximately <strong>72.8 times</strong> the pixel count of 4K. These values describe frame dimensions, not measured GPU workload ratios or achieved frame rates.</p>
+<p>More pixels often mean more shading work and more memory use, but the actual performance cost is not a simple fixed multiplier. Game engines, upscaling, scene content, effects, tiling and implementation limits all matter.</p>
+<h2 id="screen">The monitor can still be 4K.</h2>
+<p>A computer can ask a game to render into a virtual target larger than the physical display, then scale the resulting image down. Gamescope can provide a virtual display environment with a chosen game-visible resolution and output dimensions. Other virtual super-resolution mechanisms can produce a similar distinction between internal rendering and final display.</p>
+<p>This is not evidence that the display panel physically contains sixteen thousand pixels across. It means the workload may have rendered at a large internal size before presentation on the real monitor.</p>
+<h2 id="memory">A single frame can take huge memory.</h2>
+<p>Consider only one color image containing 32 bits per pixel (four bytes). At 32,768 × 18,432, that one image occupies 2,415,919,104 bytes, roughly 2.25 GiB. Games rarely need just one image: depth buffers, intermediate render targets, swapchain images, textures and engine allocations can add substantially more. Real allocation size can also depend on alignment, compression, tiling and implementation choices.</p>
+<p>This arithmetic does <strong>not</strong> mean the game necessarily allocates exactly 2.25 GiB for a render target or that a 20 GB card will certainly fail. It simply shows why unusually large targets can put pressure on memory budgets and allocation limits.</p>
+<h2 id="failure">What would a crash tell us?</h2>
+<p>One crash tells us that a run failed under a particular configuration. Without further diagnostics, it does not identify the reason. Potential factors include graphics memory pressure, a game-engine assumption, driver or API limits, the compositor path, or a separate software defect.</p>
+<p>A careful follow-up might repeat the run, adjust one factor at a time, capture error messages or check logs. A claim of causation would require evidence that separates competing explanations.</p>
+<h2 id="why">So why do it at all?</h2>
+<p>Because interesting technical behavior sometimes appears outside normal operating conditions. An extreme render size can surface scaling limitations, allocation behavior, instability or unexpected performance patterns. It can also show where a particular setup stops being useful—an observation in its own right.</p>
+<p>Linux Observatory's value is in documenting those attempts with their conditions and visible results. The footage does not become less meaningful merely because the test is impractical for daily play. Nor does an extreme test replace ordinary 4K gameplay as a reference for everyday performance.</p>
+<h2 id="sources">Technical context</h2>
+<p>Read <a href="https://github.com/ValveSoftware/gamescope" target="_blank" rel="noopener noreferrer">Gamescope's upstream description</a> for virtual display and scaling behavior. For Vulkan resource and device limits, start with the <a href="https://docs.vulkan.org/spec/latest/" target="_blank" rel="noopener noreferrer">official Vulkan specification</a>. See the <a href="/extreme-resolution/">resolution comparison table</a> for the actual pixel arithmetic used on this site.</p>
+<div class="callout"><strong>Takeaway</strong><p>Extreme resolution is not a marketing claim of everyday playability. It is a way to create a demanding condition and observe how a particular Linux graphics setup responds.</p></div><p style="margin-top:38px"><a class="arrow-link" href="/learn/">← Back to all field guides</a></p></article><aside class="article-aside" aria-label="On this page"><div class="eyebrow">ON THIS PAGE</div><a href="#pixels">Pixel maths</a><a href="#screen">Virtual resolution</a><a href="#memory">Memory cost</a><a href="#failure">Interpreting a crash</a><a href="#why">Why test?</a><a href="#sources">Sources</a><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><div class="note-label">EVIDENCE LABEL</div><p class="small-note">This is an educational explanation, not a controlled comparison or a recorded gameplay observation. Illustration figures use synthetic data.</p></aside></div></section></main>
+<footer class="site-footer"><div class="shell footer-top"><div><div class="eyebrow">THE FOOTAGE IS THE EVIDENCE.</div><h2>See it for yourself.</h2><p>A single run documents what happened under specific conditions. Watch the recording. Inspect the on-screen metrics. Ask better questions.</p><a class="button button-accent" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">Explore the YouTube channel <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens a new tab)</span></a></div><div class="footer-links"><div><span>EXPLORE</span><a href="/start-here/">New to Linux?</a><a href="/observations/">Observations</a><a href="/metrics/">Understand the numbers</a><a href="/extreme-resolution/">Beyond 4K</a><a href="/learn/">Technical field guides</a></div><div><span>THE PROJECT</span><a href="/methodology/">Methodology</a><a href="/test-environment/">Test environment</a><a href="/about/">About the observatory</a><a href="/operator/">Operator</a><a href="/faq/">FAQ</a><a href="/contact/">Contact & attribution</a></div></div></div><div class="shell footer-bottom"><a href="/" class="footer-logo">LINUX <strong>OBSERVATORY</strong></a><span>Independent. Unsponsored. Ediz Iniziel.</span><span>© 2026 Linux Observatory · <a href="/contact/">Attribution</a></span></div></footer>
+<script src="/assets/site.js" defer></script>
+</body></html>

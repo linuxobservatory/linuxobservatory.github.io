@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b0c">
+<meta name="description" content="Understand FPS, frame time, GPU load and VRAM in a Linux gameplay recording—and what those numbers cannot tell you.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://linuxobservatory.netlify.app/learn/mangohud/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Linux Observatory">
+<meta property="og:title" content="How to read a MangoHud overlay | Linux Observatory">
+<meta property="og:description" content="Understand FPS, frame time, GPU load and VRAM in a Linux gameplay recording—and what those numbers cannot tell you.">
+<meta property="og:url" content="https://linuxobservatory.netlify.app/learn/mangohud/">
+<meta property="og:image" content="https://linuxobservatory.netlify.app/assets/og-image.png">
+<meta property="og:image:alt" content="Linux Observatory: Linux gaming under observation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to read a MangoHud overlay | Linux Observatory">
+<meta name="twitter:description" content="Understand FPS, frame time, GPU load and VRAM in a Linux gameplay recording—and what those numbers cannot tell you.">
+<title>How to read a MangoHud overlay | Linux Observatory</title>
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>@media(max-width:1100px){.mobile-nav[hidden]{display:grid}.nav-toggle{display:none}}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "name": "How to read a MangoHud overlay | Linux Observatory", "description": "Understand FPS, frame time, GPU load and VRAM in a Linux gameplay recording—and what those numbers cannot tell you.", "url": "https://linuxobservatory.netlify.app/learn/mangohud/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "Linux Observatory", "url": "https://linuxobservatory.netlify.app/"}, "author": {"@type": "Person", "name": "Ediz Iniziel"}}</script>
+</head>
+<body class="page-learn-mangohud">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="utility-rail"><div class="shell rail-inside"><span><span class="pulse" aria-hidden="true"></span> INDEPENDENT FIELD OBSERVATIONS <span class="rail-slash">/</span> LINUX GAMING</span><span class="rail-right">COPENHAGEN · OPERATED BY EDIZ INIZIEL</span></div></div>
+<header class="site-header"><div class="shell header-inner">
+<a class="brand-lockup" href="/" aria-label="Linux Observatory homepage"><span class="brand-mark" aria-hidden="true">L<span>O</span><i></i></span><span class="brand-wordmark">LINUX<br>OBSERVATORY</span></a>
+<nav aria-label="Primary navigation" class="primary-nav">
+<a href="/start-here/" >Start here</a>
+<a href="/observations/" >Observations</a>
+<a href="/methodology/" >Method</a>
+<a href="/graphics-stack/" >Graphics stack</a>
+<a href="/learn/" >Learn</a>
+</nav>
+<a class="header-watch" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">View footage <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens YouTube in a new tab)</span></a>
+<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div><nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+<a href="/start-here/">Start here</a><a href="/observations/">Observations</a><a href="/methodology/">Methodology</a><a href="/graphics-stack/">Graphics stack</a><a href="/learn/">Learn</a><a href="/test-environment/">Test environment</a><a href="/about/">About</a><a href="/faq/">FAQ</a>
+</nav></header>
+<main id="main"><section class="article-hero"><div class="shell"><div class="breadcrumbs"><a href="/">HOME</a><span>/</span><a href="/learn/">FIELD GUIDES</a><span>/</span>MEASUREMENT BASICS</div><div class="eyebrow">FIELD GUIDE / MEASUREMENT BASICS</div><h1>How to read a MangoHud overlay</h1><p class="lead">Understand FPS, frame time, GPU load and VRAM in a Linux gameplay recording—and what those numbers cannot tell you.</p><div class="article-byline">LINUX OBSERVATORY · <span>EXPLANATORY GUIDE</span> · UPDATED NOVEMBER 2026 · NO BENCHMARK DATA USED</div></div></section><section class="section-tight"><div class="shell article-layout"><article class="prose"><p class="lead">A game fills the screen. Small numbers sit in a corner: FPS, GPU, CPU, VRAM, milliseconds. That is not decoration. It is a quick view into what the computer is doing.</p>
+<h2 id="what">What is MangoHud?</h2>
+<p><strong>MangoHud</strong> is an open-source overlay for supported Vulkan and OpenGL programs. It can display information such as frame rate, frame timing, resource use and temperatures. It can also log measurements depending on how it is configured. The available sensors and accuracy vary with hardware, driver, game API and system configuration.</p>
+<p>In Linux Observatory recordings, an overlay lets the viewer compare the visible game with measured state. When the game appears to hitch, the viewer can check whether a timing readout changes. When a resolution increases, they can watch how resource demand responds.</p>
+<h2 id="reading">Read the overlay in this order.</h2>
+<ol><li><strong>FPS:</strong> how quickly frames are being produced over an interval. A useful headline, never a full explanation of smoothness.</li><li><strong>Frame time:</strong> timing information associated with frames. A spike may help locate an unusual delay.</li><li><strong>GPU use:</strong> an estimate of graphics engine activity. High utilization does not tell you which operation is consuming the time.</li><li><strong>VRAM:</strong> GPU memory accounting. Be careful: allocation, reservation and actual use may not be the same quantity.</li><li><strong>CPU and RAM:</strong> system state that can matter when the bottleneck is not solely the graphics hardware.</li></ol>
+<figure class="figure"><svg viewBox="0 0 700 330" role="img" aria-label="Diagram of an imaginary performance overlay with labelled values, clearly marked as a synthetic example"><rect width="700" height="330" fill="#0d1214"/><rect x="27" y="26" width="330" height="270" rx="7" fill="#172123" stroke="#57716a"/><g font-family="monospace" fill="#e6eae7"><text x="47" y="54" font-size="14" fill="#ff8990">SYNTHETIC HUD EXAMPLE</text><text x="47" y="105" font-size="44" font-weight="700">84 FPS</text><text x="47" y="139" font-size="16">Frame time  11.9 ms</text><text x="47" y="168" font-size="16">GPU load    92%</text><text x="47" y="197" font-size="16">VRAM alloc   9.1 GiB</text><text x="47" y="226" font-size="16">CPU use     38%</text><text x="47" y="260" font-size="11" fill="#a8b6b0">Not a measured game result</text></g><g font-family="Arial,sans-serif" font-size="16" fill="#e7efea"><text x="390" y="99">1. Frames per second</text><text x="390" y="138">2. Time between frames</text><text x="390" y="177">3. Graphics load estimate</text><text x="390" y="216">4. Memory accounting</text><text x="390" y="255">5. Processor activity</text></g><g stroke="#ff8990" stroke-width="1.5"><path d="M335 91 L380 91 M335 130 L380 130 M335 169 L380 169 M335 208 L380 208 M335 247 L380 247"/></g></svg><figcaption>Synthetic instructional overlay. Labels and values are illustrative; actual MangoHud layouts depend on configuration.</figcaption></figure>
+<h2 id="interpret">What the readings do not prove</h2>
+<p>A GPU at 99% might suggest the graphics hardware is busy, but it does not prove that every slowdown is GPU-bound. A frame-time spike may appear when shaders compile, when the program waits for data, or because of many other factors. Likewise, a large VRAM number is not automatic evidence that physical memory has been exhausted.</p>
+<p>Sensor polling cadence is another complication. An occasional CPU or GPU utilization sample is not equivalent to per-frame timing. On-screen metrics may be smoothed or refreshed at different intervals. Treat them as different kinds of observations rather than interchangeable measurements.</p>
+<h2 id="example">A useful way to inspect a recording</h2>
+<p>Start watching normally, without trying to read every number. Choose one specific event: a camera turn, loading transition or burst of effects. Replay that moment. Did the game visibly hitch? What did the frame-time graph do? Were settings or resolution identified? Does the symptom recur?</p>
+<p>If the answer is “I saw a hitch, but I cannot tell why,” that is a responsible conclusion. It makes the next test more focused.</p>
+<h2 id="tools">MangoHud versus other measurement tools</h2>
+<p>Linux Observatory has also used Gallium_HUD where applicable. Tools differ in API support, exposed counters, sampling and overhead. You should not assume the values from two overlays are directly interchangeable without checking their definitions and collection methods.</p>
+<p>Read the <a href="https://github.com/flightlessmango/MangoHud" target="_blank" rel="noopener noreferrer">MangoHud project documentation</a> for configuration, supported metrics, frame-time logging and platform-specific limitations. The project’s own readouts, not a generic diagram, are the source for any claimed measurement in a Linux Observatory recording.</p>
+<div class="callout"><strong>Takeaway</strong><p>The overlay provides clues in context. The game footage provides the scene. Together they are more informative than an isolated FPS screenshot.</p></div><p style="margin-top:38px"><a class="arrow-link" href="/learn/">← Back to all field guides</a></p></article><aside class="article-aside" aria-label="On this page"><div class="eyebrow">ON THIS PAGE</div><a href="#what">What is MangoHud?</a><a href="#reading">The readouts</a><a href="#interpret">What they cannot prove</a><a href="#example">Inspecting a run</a><a href="#tools">Tool differences</a><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><div class="note-label">EVIDENCE LABEL</div><p class="small-note">This is an educational explanation, not a controlled comparison or a recorded gameplay observation. Illustration figures use synthetic data.</p></aside></div></section></main>
+<footer class="site-footer"><div class="shell footer-top"><div><div class="eyebrow">THE FOOTAGE IS THE EVIDENCE.</div><h2>See it for yourself.</h2><p>A single run documents what happened under specific conditions. Watch the recording. Inspect the on-screen metrics. Ask better questions.</p><a class="button button-accent" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">Explore the YouTube channel <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens a new tab)</span></a></div><div class="footer-links"><div><span>EXPLORE</span><a href="/start-here/">New to Linux?</a><a href="/observations/">Observations</a><a href="/metrics/">Understand the numbers</a><a href="/extreme-resolution/">Beyond 4K</a><a href="/learn/">Technical field guides</a></div><div><span>THE PROJECT</span><a href="/methodology/">Methodology</a><a href="/test-environment/">Test environment</a><a href="/about/">About the observatory</a><a href="/operator/">Operator</a><a href="/faq/">FAQ</a><a href="/contact/">Contact & attribution</a></div></div></div><div class="shell footer-bottom"><a href="/" class="footer-logo">LINUX <strong>OBSERVATORY</strong></a><span>Independent. Unsponsored. Ediz Iniziel.</span><span>© 2026 Linux Observatory · <a href="/contact/">Attribution</a></span></div></footer>
+<script src="/assets/site.js" defer></script>
+</body></html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b0c">
+<meta name="description" content="See the pixel counts and technical reasons Linux Observatory explores extreme-resolution workloads beyond native 4K.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://linuxobservatory.netlify.app/extreme-resolution/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Linux Observatory">
+<meta property="og:title" content="8K, 16K and 32K Testing | Linux Observatory">
+<meta property="og:description" content="See the pixel counts and technical reasons Linux Observatory explores extreme-resolution workloads beyond native 4K.">
+<meta property="og:url" content="https://linuxobservatory.netlify.app/extreme-resolution/">
+<meta property="og:image" content="https://linuxobservatory.netlify.app/assets/og-image.png">
+<meta property="og:image:alt" content="Linux Observatory: Linux gaming under observation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="8K, 16K and 32K Testing | Linux Observatory">
+<meta name="twitter:description" content="See the pixel counts and technical reasons Linux Observatory explores extreme-resolution workloads beyond native 4K.">
+<title>8K, 16K and 32K Testing | Linux Observatory</title>
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>@media(max-width:1100px){.mobile-nav[hidden]{display:grid}.nav-toggle{display:none}}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "8K, 16K and 32K Testing | Linux Observatory", "description": "See the pixel counts and technical reasons Linux Observatory explores extreme-resolution workloads beyond native 4K.", "url": "https://linuxobservatory.netlify.app/extreme-resolution/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "Linux Observatory", "url": "https://linuxobservatory.netlify.app/"}}</script>
+</head>
+<body class="page-extreme-resolution">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="utility-rail"><div class="shell rail-inside"><span><span class="pulse" aria-hidden="true"></span> INDEPENDENT FIELD OBSERVATIONS <span class="rail-slash">/</span> LINUX GAMING</span><span class="rail-right">COPENHAGEN · OPERATED BY EDIZ INIZIEL</span></div></div>
+<header class="site-header"><div class="shell header-inner">
+<a class="brand-lockup" href="/" aria-label="Linux Observatory homepage"><span class="brand-mark" aria-hidden="true">L<span>O</span><i></i></span><span class="brand-wordmark">LINUX<br>OBSERVATORY</span></a>
+<nav aria-label="Primary navigation" class="primary-nav">
+<a href="/start-here/" >Start here</a>
+<a href="/observations/" >Observations</a>
+<a href="/methodology/" >Method</a>
+<a href="/graphics-stack/" >Graphics stack</a>
+<a href="/learn/" >Learn</a>
+</nav>
+<a class="header-watch" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">View footage <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens YouTube in a new tab)</span></a>
+<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div><nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+<a href="/start-here/">Start here</a><a href="/observations/">Observations</a><a href="/methodology/">Methodology</a><a href="/graphics-stack/">Graphics stack</a><a href="/learn/">Learn</a><a href="/test-environment/">Test environment</a><a href="/about/">About</a><a href="/faq/">FAQ</a>
+</nav></header>
+<main id="main"><section class="page-intro"><div class="shell"><div class="eyebrow">THE EDGE OF THE POSSIBLE / RESOLUTION STRESS</div><h1>Why test a game<br>at <span class="red">16K or 32K?</span></h1><p class="lead">Not because it is a sensible way to play. Raising internal rendering resolution dramatically increases the amount of pixel work and may expose driver, memory, allocation and application constraints.</p></div></section>
+<section class="section"><div class="shell"><div class="eyebrow">PUT THE SCALE IN PERSPECTIVE</div><h2>The number of pixels is the story.</h2><div class="table-outer" role="region" aria-label="Scrollable data table" tabindex="0"><table class="metric-table"><caption class="visually-hidden">Resolution target pixel counts and ratios relative to 4K</caption><thead><tr><th scope="col">Example target</th><th scope="col">Dimensions</th><th scope="col">Pixels per frame</th><th scope="col">Relative to 4K</th></tr></thead><tbody><tr><td data-label="Example target">4K (UHD)</td><td data-label="Dimensions">3,840 × 2,160</td><td data-label="Pixels per frame">8.3 million</td><td data-label="Relative to 4K">1×</td></tr><tr><td data-label="Example target">8K</td><td data-label="Dimensions">7,680 × 4,320</td><td data-label="Pixels per frame">33.2 million</td><td data-label="Relative to 4K">4×</td></tr><tr><td data-label="Example target">16K</td><td data-label="Dimensions">15,360 × 8,640</td><td data-label="Pixels per frame">132.7 million</td><td data-label="Relative to 4K">16×</td></tr><tr><td data-label="Example target">Experimental 32K target</td><td data-label="Dimensions">32,768 × 18,432</td><td data-label="Pixels per frame">604.0 million</td><td data-label="Relative to 4K">72.8×</td></tr></tbody></table></div><p class="small-note">Pixel counts are exact products of the stated dimensions, displayed rounded. “32K+” here refers specifically to the project-reported 32,768 × 18,432 target—not one universal 32K standard.</p><div class="grid-2"><div class="tile"><div class="tile-n">WHY IT MATTERS</div><h3>Memory pressure</h3><p>One uncompressed 32-bit color image at 32,768 × 18,432 takes about 2.25 GiB before depth buffers, extra render targets, textures, copies, alignment and other overheads.</p></div><div class="tile"><div class="tile-n">WHAT IT DOES NOT MEAN</div><h3>Not automatically a 32K display</h3><p>A virtual render size can exceed the physical monitor resolution. Gamescope and other mechanisms may scale the final output down to the actual display.</p></div></div><div class="callout"><strong>A failed 16K attempt is still an observation—not a diagnosis.</strong><p>If a run terminates, the recording can document the failure. Establishing whether VRAM exhaustion, an API limit, a driver bug or another factor caused it requires additional evidence.</p></div><p><a class="arrow-link" href="/learn/extreme-resolution/">Read the full beginner-friendly explanation →</a></p></div></section></main>
+<footer class="site-footer"><div class="shell footer-top"><div><div class="eyebrow">THE FOOTAGE IS THE EVIDENCE.</div><h2>See it for yourself.</h2><p>A single run documents what happened under specific conditions. Watch the recording. Inspect the on-screen metrics. Ask better questions.</p><a class="button button-accent" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">Explore the YouTube channel <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens a new tab)</span></a></div><div class="footer-links"><div><span>EXPLORE</span><a href="/start-here/">New to Linux?</a><a href="/observations/">Observations</a><a href="/metrics/">Understand the numbers</a><a href="/extreme-resolution/">Beyond 4K</a><a href="/learn/">Technical field guides</a></div><div><span>THE PROJECT</span><a href="/methodology/">Methodology</a><a href="/test-environment/">Test environment</a><a href="/about/">About the observatory</a><a href="/operator/">Operator</a><a href="/faq/">FAQ</a><a href="/contact/">Contact & attribution</a></div></div></div><div class="shell footer-bottom"><a href="/" class="footer-logo">LINUX <strong>OBSERVATORY</strong></a><span>Independent. Unsponsored. Ediz Iniziel.</span><span>© 2026 Linux Observatory · <a href="/contact/">Attribution</a></span></div></footer>
+<script src="/assets/site.js" defer></script>
+</body></html>

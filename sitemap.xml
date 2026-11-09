@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://linuxobservatory.netlify.app/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/about/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/contact/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/extreme-resolution/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/faq/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/graphics-stack/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/learn/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/learn/extreme-resolution/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/learn/frame-pacing/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/learn/mangohud/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/learn/radv/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/methodology/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/metrics/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/observations/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/operator/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/start-here/</loc></url>
+  <url><loc>https://linuxobservatory.netlify.app/test-environment/</loc></url>
+</urlset>

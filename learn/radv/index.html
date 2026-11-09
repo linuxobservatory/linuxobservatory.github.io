@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b0c">
+<meta name="description" content="A plain-language explanation of Mesa RADV, Vulkan, Proton and the AMD graphics driver stack.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://linuxobservatory.netlify.app/learn/radv/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Linux Observatory">
+<meta property="og:title" content="What is RADV in Linux gaming? | Linux Observatory">
+<meta property="og:description" content="A plain-language explanation of Mesa RADV, Vulkan, Proton and the AMD graphics driver stack.">
+<meta property="og:url" content="https://linuxobservatory.netlify.app/learn/radv/">
+<meta property="og:image" content="https://linuxobservatory.netlify.app/assets/og-image.png">
+<meta property="og:image:alt" content="Linux Observatory: Linux gaming under observation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What is RADV in Linux gaming? | Linux Observatory">
+<meta name="twitter:description" content="A plain-language explanation of Mesa RADV, Vulkan, Proton and the AMD graphics driver stack.">
+<title>What is RADV in Linux gaming? | Linux Observatory</title>
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>@media(max-width:1100px){.mobile-nav[hidden]{display:grid}.nav-toggle{display:none}}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "name": "What is RADV in Linux gaming? | Linux Observatory", "description": "A plain-language explanation of Mesa RADV, Vulkan, Proton and the AMD graphics driver stack.", "url": "https://linuxobservatory.netlify.app/learn/radv/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "Linux Observatory", "url": "https://linuxobservatory.netlify.app/"}, "author": {"@type": "Person", "name": "Ediz Iniziel"}}</script>
+</head>
+<body class="page-learn-radv">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="utility-rail"><div class="shell rail-inside"><span><span class="pulse" aria-hidden="true"></span> INDEPENDENT FIELD OBSERVATIONS <span class="rail-slash">/</span> LINUX GAMING</span><span class="rail-right">COPENHAGEN · OPERATED BY EDIZ INIZIEL</span></div></div>
+<header class="site-header"><div class="shell header-inner">
+<a class="brand-lockup" href="/" aria-label="Linux Observatory homepage"><span class="brand-mark" aria-hidden="true">L<span>O</span><i></i></span><span class="brand-wordmark">LINUX<br>OBSERVATORY</span></a>
+<nav aria-label="Primary navigation" class="primary-nav">
+<a href="/start-here/" >Start here</a>
+<a href="/observations/" >Observations</a>
+<a href="/methodology/" >Method</a>
+<a href="/graphics-stack/" >Graphics stack</a>
+<a href="/learn/" >Learn</a>
+</nav>
+<a class="header-watch" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">View footage <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens YouTube in a new tab)</span></a>
+<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div><nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+<a href="/start-here/">Start here</a><a href="/observations/">Observations</a><a href="/methodology/">Methodology</a><a href="/graphics-stack/">Graphics stack</a><a href="/learn/">Learn</a><a href="/test-environment/">Test environment</a><a href="/about/">About</a><a href="/faq/">FAQ</a>
+</nav></header>
+<main id="main"><section class="article-hero"><div class="shell"><div class="breadcrumbs"><a href="/">HOME</a><span>/</span><a href="/learn/">FIELD GUIDES</a><span>/</span>GRAPHICS STACK</div><div class="eyebrow">FIELD GUIDE / GRAPHICS STACK</div><h1>What is RADV in Linux gaming?</h1><p class="lead">A plain-language explanation of Mesa RADV, Vulkan, Proton and the AMD graphics driver stack.</p><div class="article-byline">LINUX OBSERVATORY · <span>EXPLANATORY GUIDE</span> · UPDATED NOVEMBER 2026 · NO BENCHMARK DATA USED</div></div></section><section class="section-tight"><div class="shell article-layout"><article class="prose"><p class="lead">If you have ever watched a Linux gaming video and seen “Mesa,” “RADV,” “Vulkan” or “Proton” in the description, you may have wondered whether they all do the same job. They don't.</p>
+<h2 id="driver">RADV is a graphics driver.</h2>
+<p><strong>RADV</strong> is a userspace Vulkan driver for many AMD graphics cards. It belongs to the open-source Mesa graphics project. Its job includes helping turn a game's Vulkan requests into commands that supported AMD graphics hardware can execute.</p>
+<p>To use an analogy, a game is a person describing a picture; Vulkan is a shared technical language; RADV is an implementation that understands this language and knows how to instruct the particular GPU. This is an analogy, not an exact description of the API boundary.</p>
+<h2 id="mesa">Then what is Mesa?</h2>
+<p>Mesa is not a single driver. It is a collection of graphics implementations and related components used across Linux systems. RADV is one of them. The Linux kernel also has an <code>amdgpu</code> driver, but that is a different piece: kernel-mode and userspace drivers divide responsibilities.</p>
+<p>Mesa's <a href="https://docs.mesa3d.org/drivers/radv.html" target="_blank" rel="noopener noreferrer">RADV documentation</a> describes the division. The userspace driver handles hardware-specific graphics work such as shaders and command recording, while the kernel driver manages lower-level interactions and resources.</p>
+<h2 id="windows">How can a Windows game use RADV?</h2>
+<p>Many Windows PC games use Direct3D, a graphics API associated with Windows. Under Steam's Proton compatibility environment, graphics translation components can convert those requests into Vulkan calls. DXVK covers Direct3D 9, 10 and 11; VKD3D-Proton is used for Direct3D 12. RADV can then implement the Vulkan requests for an AMD card.</p>
+<p>The route is roughly:</p>
+<pre><code>Windows game → Proton / Wine
+             → DXVK or VKD3D-Proton (if applicable)
+             → Vulkan
+             → Mesa RADV
+             → amdgpu / AMD GPU</code></pre>
+<p>Not every game follows that exact path. Native Vulkan games may bypass those Direct3D translation components. Native OpenGL games use an OpenGL driver instead. External compositors and the display protocol introduce additional layers that this simple map leaves out.</p>
+<h2 id="updates">Why does the Mesa version matter?</h2>
+<p>Graphics-driver updates can include bug fixes, performance changes, support for new hardware and application workarounds. A game that misbehaves with one Mesa build may behave differently with another. But seeing a difference between two videos does not prove that Mesa alone caused it unless the workload and other conditions were controlled.</p>
+<p>That is why Linux Observatory pays attention to software versions. Game patches, kernel updates, Proton variants, settings and driver changes may all affect the outcome. A clear recording description makes observations easier to compare without pretending they are controlled when they are not.</p>
+<h2 id="observe">What can you actually observe?</h2>
+<p>A recording can show a game launching, rendering frames, stuttering or failing under a documented environment. It can show an overlay's displayed utilization or timing readings. It cannot reveal every internal driver decision from the outside. Driver-level causation often needs logs, profiling, controlled reproduction and maintainer analysis.</p>
+<h2 id="sources">Reliable places to learn more</h2>
+<ul><li><a href="https://docs.mesa3d.org/drivers/radv.html" target="_blank" rel="noopener noreferrer">Mesa RADV official documentation</a></li><li><a href="https://github.com/ValveSoftware/Proton" target="_blank" rel="noopener noreferrer">Valve Proton repository</a></li><li><a href="https://github.com/ValveSoftware/dxvk" target="_blank" rel="noopener noreferrer">DXVK repository</a></li><li><a href="https://github.com/HansKristian-Work/vkd3d-proton" target="_blank" rel="noopener noreferrer">VKD3D-Proton repository</a></li></ul>
+<div class="callout"><strong>Takeaway</strong><p>Proton helps run many Windows games. DXVK or VKD3D-Proton can translate Direct3D into Vulkan. RADV implements Vulkan for supported AMD GPUs. Different layers, different jobs.</p></div><p style="margin-top:38px"><a class="arrow-link" href="/learn/">← Back to all field guides</a></p></article><aside class="article-aside" aria-label="On this page"><div class="eyebrow">ON THIS PAGE</div><a href="#driver">What is RADV?</a><a href="#mesa">Mesa and kernel</a><a href="#windows">Windows compatibility</a><a href="#updates">Driver versions</a><a href="#observe">What footage shows</a><a href="#sources">Documentation</a><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><div class="note-label">EVIDENCE LABEL</div><p class="small-note">This is an educational explanation, not a controlled comparison or a recorded gameplay observation. Illustration figures use synthetic data.</p></aside></div></section></main>
+<footer class="site-footer"><div class="shell footer-top"><div><div class="eyebrow">THE FOOTAGE IS THE EVIDENCE.</div><h2>See it for yourself.</h2><p>A single run documents what happened under specific conditions. Watch the recording. Inspect the on-screen metrics. Ask better questions.</p><a class="button button-accent" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">Explore the YouTube channel <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens a new tab)</span></a></div><div class="footer-links"><div><span>EXPLORE</span><a href="/start-here/">New to Linux?</a><a href="/observations/">Observations</a><a href="/metrics/">Understand the numbers</a><a href="/extreme-resolution/">Beyond 4K</a><a href="/learn/">Technical field guides</a></div><div><span>THE PROJECT</span><a href="/methodology/">Methodology</a><a href="/test-environment/">Test environment</a><a href="/about/">About the observatory</a><a href="/operator/">Operator</a><a href="/faq/">FAQ</a><a href="/contact/">Contact & attribution</a></div></div></div><div class="shell footer-bottom"><a href="/" class="footer-logo">LINUX <strong>OBSERVATORY</strong></a><span>Independent. Unsponsored. Ediz Iniziel.</span><span>© 2026 Linux Observatory · <a href="/contact/">Attribution</a></span></div></footer>
+<script src="/assets/site.js" defer></script>
+</body></html>

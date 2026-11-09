@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b0c">
+<meta name="description" content="Observe. Instrument. Record. Inspect. How Linux Observatory distinguishes gameplay observations, controlled comparisons and diagnostics.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://linuxobservatory.netlify.app/methodology/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Linux Observatory">
+<meta property="og:title" content="Methodology | Linux Observatory">
+<meta property="og:description" content="Observe. Instrument. Record. Inspect. How Linux Observatory distinguishes gameplay observations, controlled comparisons and diagnostics.">
+<meta property="og:url" content="https://linuxobservatory.netlify.app/methodology/">
+<meta property="og:image" content="https://linuxobservatory.netlify.app/assets/og-image.png">
+<meta property="og:image:alt" content="Linux Observatory: Linux gaming under observation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Methodology | Linux Observatory">
+<meta name="twitter:description" content="Observe. Instrument. Record. Inspect. How Linux Observatory distinguishes gameplay observations, controlled comparisons and diagnostics.">
+<title>Methodology | Linux Observatory</title>
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>@media(max-width:1100px){.mobile-nav[hidden]{display:grid}.nav-toggle{display:none}}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Methodology | Linux Observatory", "description": "Observe. Instrument. Record. Inspect. How Linux Observatory distinguishes gameplay observations, controlled comparisons and diagnostics.", "url": "https://linuxobservatory.netlify.app/methodology/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "Linux Observatory", "url": "https://linuxobservatory.netlify.app/"}}</script>
+</head>
+<body class="page-methodology">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="utility-rail"><div class="shell rail-inside"><span><span class="pulse" aria-hidden="true"></span> INDEPENDENT FIELD OBSERVATIONS <span class="rail-slash">/</span> LINUX GAMING</span><span class="rail-right">COPENHAGEN · OPERATED BY EDIZ INIZIEL</span></div></div>
+<header class="site-header"><div class="shell header-inner">
+<a class="brand-lockup" href="/" aria-label="Linux Observatory homepage"><span class="brand-mark" aria-hidden="true">L<span>O</span><i></i></span><span class="brand-wordmark">LINUX<br>OBSERVATORY</span></a>
+<nav aria-label="Primary navigation" class="primary-nav">
+<a href="/start-here/" >Start here</a>
+<a href="/observations/" >Observations</a>
+<a href="/methodology/" aria-current="page">Method</a>
+<a href="/graphics-stack/" >Graphics stack</a>
+<a href="/learn/" >Learn</a>
+</nav>
+<a class="header-watch" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">View footage <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens YouTube in a new tab)</span></a>
+<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div><nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+<a href="/start-here/">Start here</a><a href="/observations/">Observations</a><a href="/methodology/">Methodology</a><a href="/graphics-stack/">Graphics stack</a><a href="/learn/">Learn</a><a href="/test-environment/">Test environment</a><a href="/about/">About</a><a href="/faq/">FAQ</a>
+</nav></header>
+<main id="main"><section class="page-intro"><div class="shell"><div class="eyebrow">METHODOLOGY / HOW A RECORD IS MADE</div><h1>Observe.<br>Instrument.<br>Record. <span class="red">Inspect.</span></h1><p class="lead">Continuous observation is the starting point. A comparison needs stricter controls; a diagnosis needs tested explanations. Those activities are related, not interchangeable.</p></div></section>
+<section class="section"><div class="shell"><div class="grid-2"><div class="tile"><div class="tile-n">01 / OBSERVE</div><h3>Choose the question</h3><p>A game, a graphics-stack change, a native-versus-Proton run, a specific failure, or an unusual workload.</p></div><div class="tile"><div class="tile-n">02 / INSTRUMENT</div><h3>Make behavior visible</h3><p>Use performance overlays when appropriate, while acknowledging sampling limits and instrumentation overhead.</p></div><div class="tile"><div class="tile-n">03 / RECORD</div><h3>Preserve the run</h3><p>Capture the visible experience and measurements together. Where footage is continuous, the viewer can inspect the sequence rather than only a summary.</p></div><div class="tile"><div class="tile-n">04 / INSPECT</div><h3>Interpret carefully</h3><p>Separate what appeared on screen from hypotheses about why it happened. A frame-time spike is an observation; its root cause needs investigation.</p></div></div></div></section>
+<section class="section"><div class="shell"><div class="eyebrow">THREE TYPES OF EVIDENCE</div><h2>Not every test makes the same claim.</h2><div class="grid-3"><div class="tile"><div class="tile-n">TIER 01</div><h3>Observation</h3><p>Gameplay recorded under stated conditions. Valid for showing what happened in that run. Not enough by itself for universal performance claims.</p></div><div class="tile"><div class="tile-n">TIER 02</div><h3>Comparison</h3><p>Runs with comparable workloads, controlled variables and repeated measurement where possible. Stronger for differences between configurations.</p></div><div class="tile"><div class="tile-n">TIER 03</div><h3>Diagnostic</h3><p>A targeted investigation of an observed fault using symptoms, hypotheses, tests and findings. Stronger for identifying a cause.</p></div></div><div class="callout"><strong>An important limitation</strong><p>Earlier recordings do not necessarily contain every metadata field used in newer documentation. Missing context must be marked rather than reconstructed as fact. The original footage can still document what visibly happened.</p></div><h3>Suggested minimum description for a new observation</h3><div class="prose"><pre><code>TYPE: Observation
+GAME: [title / build]
+DATE: [YYYY-MM-DD]
+GPU / CPU: [models]
+DISTRO / KERNEL: [versions]
+MESA / DRIVER: [version or package provenance]
+RUNTIME: [Linux native / Proton build / other]
+RENDERING: [game resolution, output resolution, VSR/Gamescope]
+SETTINGS: [relevant graphics settings]
+INSTRUMENTATION: [overlay and mode]
+WHAT WAS OBSERVED: [descriptive, not causal]
+KNOWN LIMITATIONS: [missing data, possible confounds]</code></pre></div><p class="muted">A controlled comparison requires additional fields: workload matching, repeat count, measurement method, variability and results. A diagnostic entry requires hypotheses and tests.</p><p><a class="arrow-link" href="/contact/">How to cite a Linux Observatory observation →</a></p></div></section></main>
+<footer class="site-footer"><div class="shell footer-top"><div><div class="eyebrow">THE FOOTAGE IS THE EVIDENCE.</div><h2>See it for yourself.</h2><p>A single run documents what happened under specific conditions. Watch the recording. Inspect the on-screen metrics. Ask better questions.</p><a class="button button-accent" href="https://www.youtube.com/@LinuxObservatory" target="_blank" rel="noopener noreferrer">Explore the YouTube channel <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens a new tab)</span></a></div><div class="footer-links"><div><span>EXPLORE</span><a href="/start-here/">New to Linux?</a><a href="/observations/">Observations</a><a href="/metrics/">Understand the numbers</a><a href="/extreme-resolution/">Beyond 4K</a><a href="/learn/">Technical field guides</a></div><div><span>THE PROJECT</span><a href="/methodology/">Methodology</a><a href="/test-environment/">Test environment</a><a href="/about/">About the observatory</a><a href="/operator/">Operator</a><a href="/faq/">FAQ</a><a href="/contact/">Contact & attribution</a></div></div></div><div class="shell footer-bottom"><a href="/" class="footer-logo">LINUX <strong>OBSERVATORY</strong></a><span>Independent. Unsponsored. Ediz Iniziel.</span><span>© 2026 Linux Observatory · <a href="/contact/">Attribution</a></span></div></footer>
+<script src="/assets/site.js" defer></script>
+</body></html>

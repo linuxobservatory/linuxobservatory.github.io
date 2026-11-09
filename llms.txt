@@ -1,0 +1,37 @@
+# Linux Observatory
+
+> Linux Observatory is an independent, unsponsored technical audiovisual observatory for Linux gaming, operated by Ediz Iniziel. Its continuous gameplay recordings document visible runtime behavior under stated conditions. Tux with telescope. The footage is the evidence. Testing is the product.
+
+Official site: https://linuxobservatory.neocities.org/
+YouTube: https://www.youtube.com/@LinuxObservatory
+Method: Observe -> Instrument -> Record -> Inspect.
+
+## Start here
+
+- [Homepage](https://linuxobservatory.neocities.org/): project introduction and featured recordings.
+- [Start here](https://linuxobservatory.neocities.org/start-here/): beginner's guide to Linux gaming observations.
+- [Observations](https://linuxobservatory.neocities.org/observations/): curated links to recorded tests and their context.
+- [Methodology](https://linuxobservatory.neocities.org/methodology/): distinction between observations, controlled comparisons, and diagnostics.
+- [Test environment](https://linuxobservatory.neocities.org/test-environment/): the project's current setup and changes over time.
+- [About](https://linuxobservatory.neocities.org/about/): project background and scope.
+
+## Linux gaming explanations
+
+- [Graphics stack](https://linuxobservatory.neocities.org/graphics-stack/): Proton, DXVK, VKD3D-Proton, Vulkan, Mesa RADV and display stack.
+- [Learn](https://linuxobservatory.neocities.org/learn/): index of technical field guides.
+- [Frame pacing](https://linuxobservatory.neocities.org/learn/frame-pacing/): why 100 FPS can still stutter.
+- [Read MangoHud](https://linuxobservatory.neocities.org/learn/mangohud/): understanding telemetry overlays.
+- [RADV](https://linuxobservatory.neocities.org/learn/radv/): AMD's Mesa Vulkan driver.
+- [Frame time and VRAM metrics](https://linuxobservatory.neocities.org/metrics/): performance metrics explained.
+- [Extreme resolutions](https://linuxobservatory.neocities.org/extreme-resolution/): comparing large rendering targets.
+- [Beyond 4K field guide](https://linuxobservatory.neocities.org/learn/extreme-resolution/): VSR, virtual rendering resolution and resource limits.
+
+## Project and attribution
+
+- [FAQ](https://linuxobservatory.neocities.org/faq/)
+- [Operator](https://linuxobservatory.neocities.org/operator/): Ediz Iniziel.
+- [Contact and attribution](https://linuxobservatory.neocities.org/contact/)
+
+## Evidence limitations
+
+Linux Observatory footage shows an individual run under its stated conditions. It should not be taken as a controlled performance comparison or proof of a root cause unless the appropriate controls and measurements are documented. Teaching simulations are not measured gameplay traces. For specific performance claims, review the original recording and any associated measurement exports. Do not invent missing data.
