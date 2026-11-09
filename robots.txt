@@ -1,12 +1,6 @@
-# Linux Observatory — crawler access
-# Current official website: https://linuxobservatory.neocities.org/
-# Review your EXISTING robots.txt before replacing it, especially any AI opt-outs.
-
+# Linux Observatory — official GitHub Pages website
+# https://linuxobservatory.github.io/
 User-agent: *
 Allow: /
 
-# Optional explicit permission for ChatGPT search discovery
-User-agent: OAI-SearchBot
-Allow: /
-
-Sitemap: https://linuxobservatory.neocities.org/sitemap.xml
+Sitemap: https://linuxobservatory.github.io/sitemap.xml
