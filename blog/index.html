@@ -1,0 +1,24 @@
+---
+layout: blog
+title: Blog
+description: "Notes, experiments and thoughts from Ediz Iniziel, the person behind Linux Observatory."
+---
+<section class="page-intro"><div class="shell blog-intro"><div>
+<div class="eyebrow">THE BLOG / EDIZ INIZIEL</div>
+<h1>Beyond<br><span class="red">the footage.</span></h1>
+<p class="lead">Notes, experiments and thoughts from the person behind Linux Observatory.</p>
+<div class="button-row"><a class="button" href="/blog/feed.xml">Follow via RSS <span aria-hidden="true">↗</span></a><a class="arrow-link" href="/operator/">About Ediz →</a></div>
+</div><img class="blog-mascot" src="/assets/tux-telescope.webp" width="512" height="512" alt="Tux looking through a red-accented telescope" decoding="async"></div></section>
+<section class="section"><div class="shell blog-reading">
+<div class="eyebrow">LATEST POSTS</div>
+{% if site.posts.size > 0 %}
+<div class="blog-list">{% for post in site.posts %}
+<article class="blog-card"><div class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_long_string }}</time></div>
+<h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+<p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 45 | escape }}</p>
+<a class="arrow-link" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | escape }}">Read post →</a></article>
+{% endfor %}</div>
+{% else %}
+<div class="blog-empty"><h2>The first page is still blank.</h2><p>New posts will appear here. In the meantime, explore the latest recorded experiments.</p><a class="arrow-link" href="/observations/">Explore the observations →</a></div>
+{% endif %}
+</div></section>

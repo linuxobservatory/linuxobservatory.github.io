@@ -1,0 +1,20 @@
+title: Linux Observatory
+url: "https://linuxobservatory.github.io"
+baseurl: ""
+description: "Notes, experiments and thoughts from Ediz Iniziel."
+timezone: Europe/Copenhagen
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+future: false
+show_drafts: false
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Ediz Iniziel
+exclude:
+  - BLOGGING.md
+  - dist
+  - .openai

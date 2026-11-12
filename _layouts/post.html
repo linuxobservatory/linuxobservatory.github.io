@@ -1,0 +1,14 @@
+---
+layout: blog
+---
+<article class="blog-post">
+<header class="page-intro"><div class="shell blog-reading">
+<a class="arrow-link" href="/blog/">← All posts</a>
+<div class="eyebrow blog-post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_long_string }}</time> · EDIZ INIZIEL</div>
+<h1>{{ page.title | escape }}</h1>
+{% if page.description %}<p class="lead">{{ page.description | escape }}</p>{% endif %}
+{% if page.tags.size > 0 %}<div class="blog-tags">{% for tag in page.tags %}<span class="chip">{{ tag | escape }}</span>{% endfor %}</div>{% endif %}
+</div></header>
+<div class="shell blog-reading blog-body"><div class="prose">{{ content }}</div>
+<footer class="blog-post-footer"><p>Written by <a href="/operator/">Ediz Iniziel</a> · Linux Observatory</p><a class="arrow-link" href="/blog/">← Back to the blog</a><a class="arrow-link" href="/blog/feed.xml">Follow via RSS →</a></footer></div>
+</article>

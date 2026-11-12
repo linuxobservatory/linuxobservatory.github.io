@@ -24,6 +24,10 @@ Method: Observe -> Instrument -> Record -> Inspect.
 - [Extreme resolutions](https://linuxobservatory.github.io/extreme-resolution/): 8K, 16K and 32K workloads.
 - [High-resolution field guide](https://linuxobservatory.github.io/learn/extreme-resolution/): virtual resolutions and experimental limits.
 
+## Blog
+- [Blog](https://linuxobservatory.github.io/blog/): personal notes, experiments and thoughts by Ediz Iniziel.
+- [RSS feed](https://linuxobservatory.github.io/blog/feed.xml)
+
 ## Project and attribution
 - [FAQ](https://linuxobservatory.github.io/faq/)
 - [Operator](https://linuxobservatory.github.io/operator/)
