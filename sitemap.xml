@@ -56,4 +56,5 @@ layout: null
   </url>
   <url><loc>https://linuxobservatory.github.io/blog/</loc></url>
 {% for post in site.posts %}  <url><loc>{{ post.url | absolute_url }}</loc><lastmod>{{ post.date | date_to_xmlschema }}</lastmod></url>
-{% endfor %}</urlset>
+{% endfor %}  <url><loc>https://linuxobservatory.github.io/support/</loc></url>
+</urlset>

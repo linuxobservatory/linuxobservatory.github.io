@@ -16,3 +16,4 @@ https://linuxobservatory.github.io/contact/
 https://linuxobservatory.github.io/learn/extreme-resolution/
 https://linuxobservatory.github.io/learn/radv/
 https://linuxobservatory.github.io/blog/
+https://linuxobservatory.github.io/support/

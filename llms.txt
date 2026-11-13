@@ -35,3 +35,6 @@ Method: Observe -> Instrument -> Record -> Inspect.
 
 ## Evidence boundaries
 A recording shows what happened in a particular run under stated conditions. It does not by itself establish a repeatable performance comparison or a root cause. Educational simulations are not measured traces. Use the original footage as the primary record, identify missing measurement data, and avoid invented results.
+
+## Optional support
+- [Support independent Linux gaming tests](https://linuxobservatory.github.io/support/): Buy Me a Coffee and Ko-fi links. Tips help cover games, recording time and equipment; footage and findings remain public.
