@@ -1,0 +1,18 @@
+/* Same palette and type hierarchy; language links remain available without JS. */
+.language-nav{position:relative;background:var(--bg2);border-bottom:1px solid var(--line)}
+.language-inner{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-block:10px;font-size:.94rem;line-height:1.5}
+.language-inner>span{color:var(--muted)}
+.language-inner a{padding:5px 8px;text-decoration:none;min-height:36px;display:inline-flex;align-items:center;border-bottom:2px solid transparent}
+.language-inner a[aria-current]{color:var(--red2);border-color:var(--red)}
+.language-note{padding-block:22px;color:var(--muted);font-size:.94rem}
+.language-note p{margin:0}
+/* Tanker does not cover Chinese glyphs. Keep the brand and use native CJK fallbacks. */
+html[lang="zh-Hans"]{--sans:system-ui,-apple-system,"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif;--display:"Tanker","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif}
+html[lang="zh-Hans"] h1,html[lang="zh-Hans"] h2,html[lang="zh-Hans"] h3{line-height:1.25;letter-spacing:0}
+html[lang="zh-Hans"] .eyebrow{letter-spacing:.04em}
+html:not([lang="en"]) .header-inner{gap:16px}
+html:not([lang="en"]) .primary-nav{gap:14px}
+html:not([lang="en"]) .demo-controls{flex-wrap:wrap}
+html:not([lang="en"]) .demo-toolbar{flex-wrap:wrap}
+@media(min-width:1101px) and (max-width:1300px){html:not([lang="en"]) .primary-nav{display:none}html:not([lang="en"]) .nav-toggle{display:block}}
+@media(max-width:620px){.language-inner{gap:4px 8px;font-size:.88rem}.language-inner>span{width:100%}.language-inner a{padding-inline:5px}.language-note{font-size:.88rem}}

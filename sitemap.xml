@@ -57,4 +57,14 @@ layout: null
   <url><loc>https://linuxobservatory.github.io/blog/</loc></url>
 {% for post in site.posts %}  <url><loc>{{ post.url | absolute_url }}</loc><lastmod>{{ post.date | date_to_xmlschema }}</lastmod></url>
 {% endfor %}  <url><loc>https://linuxobservatory.github.io/support/</loc></url>
-</urlset>
+<!-- i18n:start -->
+  <url><loc>https://linuxobservatory.github.io/da/</loc></url>
+  <url><loc>https://linuxobservatory.github.io/da/about/</loc></url>
+  <url><loc>https://linuxobservatory.github.io/da/start-here/</loc></url>
+  <url><loc>https://linuxobservatory.github.io/de/</loc></url>
+  <url><loc>https://linuxobservatory.github.io/de/about/</loc></url>
+  <url><loc>https://linuxobservatory.github.io/de/start-here/</loc></url>
+  <url><loc>https://linuxobservatory.github.io/zh-hans/</loc></url>
+  <url><loc>https://linuxobservatory.github.io/zh-hans/about/</loc></url>
+  <url><loc>https://linuxobservatory.github.io/zh-hans/start-here/</loc></url>
+<!-- i18n:end --></urlset>

@@ -17,3 +17,12 @@ https://linuxobservatory.github.io/learn/extreme-resolution/
 https://linuxobservatory.github.io/learn/radv/
 https://linuxobservatory.github.io/blog/
 https://linuxobservatory.github.io/support/
+https://linuxobservatory.github.io/da/
+https://linuxobservatory.github.io/da/about/
+https://linuxobservatory.github.io/da/start-here/
+https://linuxobservatory.github.io/de/
+https://linuxobservatory.github.io/de/about/
+https://linuxobservatory.github.io/de/start-here/
+https://linuxobservatory.github.io/zh-hans/
+https://linuxobservatory.github.io/zh-hans/about/
+https://linuxobservatory.github.io/zh-hans/start-here/

@@ -18,3 +18,5 @@ exclude:
   - BLOGGING.md
   - dist
   - .openai
+  - scripts
+  - translations
