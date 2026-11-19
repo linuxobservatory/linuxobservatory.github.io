@@ -35,6 +35,13 @@ class FeedValidationTests(unittest.TestCase):
         self.assertEqual(videos[0]["id"], "V0000000005")
         self.assertTrue(all("youtube.com/watch?v=" in v["url"] for v in videos))
 
+    def test_youtube_uc_prefix_omitted_in_atom_channel_ids(self):
+        # Regression: the real Atom feed returned the 22-character ID without UC.
+        short_id = mod.CHANNEL_ID[2:]
+        videos = mod.parse_feed(fixture(root_id=short_id, bad_entry_id=short_id))
+        self.assertEqual(len(videos), 6)
+
+
     def test_wrong_feed_owner_rejected(self):
         with self.assertRaises(ValueError):
             mod.parse_feed(fixture(root_id="UC0000000000000000000000"))
