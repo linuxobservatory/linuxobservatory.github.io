@@ -1,30 +1,85 @@
 (() => {
-  const root = document.querySelector('[data-latest-videos]');
-  if (!root) return;
-  const grid = root.querySelector('[data-latest-grid]');
-  const status = root.querySelector('[data-latest-status]');
-  const dateFmt = new Intl.DateTimeFormat(document.documentElement.lang || 'en', {year:'numeric',month:'short',day:'numeric'});
-  fetch('/data/latest-videos.json', {cache:'no-cache'})
-    .then(r => { if (!r.ok) throw Error('Feed not yet available'); return r.json(); })
-    .then(data => {
-      if (!Array.isArray(data.videos) || !data.videos.length) throw Error('Empty feed');
-      const fragment = document.createDocumentFragment();
-      for (const video of data.videos.slice(0,6)) {
-        if (!/^[\w-]{11}$/.test(video.id)) continue;
-        const card = document.createElement('article'); card.className = 'story-card';
-        const a = document.createElement('a'); a.className = 'clip-poster'; a.href = 'https://www.youtube.com/watch?v=' + video.id; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.setAttribute('aria-label', video.title + ' (YouTube, new tab)');
-        const img = document.createElement('img'); img.loading = 'lazy'; img.width = 480; img.height = 360; img.alt = video.title; img.src = 'https://i.ytimg.com/vi/' + video.id + '/hqdefault.jpg';
-        const play = document.createElement('span'); play.className = 'clip-play'; play.setAttribute('aria-hidden','true'); play.textContent = '▶';
-        a.append(img,play);
-        const body = document.createElement('div'); body.className = 'story-body';
-        const label = document.createElement('span'); label.className = 'story-label';
-        const dt = new Date(video.published); label.textContent = Number.isNaN(dt.getTime()) ? 'LATEST UPLOAD' : dateFmt.format(dt);
-        const h = document.createElement('h3'); h.textContent = video.title;
-        const link = document.createElement('a'); link.href = a.href; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = root.dataset.watchLabel || 'Watch on YouTube ↗';
-        body.append(label,h,link); card.append(a,body); fragment.append(card);
-      }
-      if (!fragment.childNodes.length) throw Error('Invalid video IDs');
-      grid.replaceChildren(fragment); status.hidden = true;
+  const container = document.querySelector('[data-latest-videos]');
+  if (!container) return;
+
+  const verifiedChannel = 'UCNq7pDavJRTEjg3AOdcuMAg';
+  const grid = container.querySelector('[data-latest-grid]');
+  const status = container.querySelector('[data-latest-status]');
+  const dateFormatter = new Intl.DateTimeFormat(
+    document.documentElement.lang || 'en',
+    { year: 'numeric', month: 'short', day: 'numeric' }
+  );
+
+  function displayError() {
+    status.textContent = container.dataset.errorLabel || 'Visit our YouTube channel to see the latest uploads.';
+    status.hidden = false;
+  }
+
+  fetch('/data/latest-videos.json', { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) throw new Error('Video data unavailable');
+      return response.json();
     })
-    .catch(() => { status.textContent = root.dataset.errorLabel || 'Latest uploads are temporarily unavailable. Visit YouTube for the newest videos.'; });
+    .then(data => {
+      // Fail closed. Never show videos if the feed's identity is unverified.
+      if (data.channel_id !== verifiedChannel ||
+          !Array.isArray(data.videos) || data.videos.length !== 6) {
+        throw new Error('Not a verified six-video feed');
+      }
+
+      const fragment = document.createDocumentFragment();
+      const seen = new Set();
+      for (const video of data.videos) {
+        if (!video || !/^[a-zA-Z0-9_-]{11}$/.test(video.id) ||
+            typeof video.title !== 'string' || !video.title.trim() ||
+            seen.has(video.id)) {
+          throw new Error('Invalid video');
+        }
+        seen.add(video.id);
+
+        const article = document.createElement('article');
+        article.className = 'story-card';
+        const poster = document.createElement('a');
+        poster.className = 'clip-poster';
+        poster.href = 'https://www.youtube.com/watch?v=' + video.id;
+        poster.target = '_blank';
+        poster.rel = 'noopener noreferrer';
+        poster.setAttribute('aria-label', video.title + ' (YouTube, new tab)');
+
+        const thumbnail = document.createElement('img');
+        thumbnail.loading = 'lazy';
+        thumbnail.width = 480;
+        thumbnail.height = 360;
+        thumbnail.src = 'https://i.ytimg.com/vi/' + video.id + '/hqdefault.jpg';
+        thumbnail.alt = video.title;
+
+        const playIcon = document.createElement('span');
+        playIcon.className = 'clip-play';
+        playIcon.setAttribute('aria-hidden', 'true');
+        playIcon.textContent = '▶';
+        poster.append(thumbnail, playIcon);
+
+        const body = document.createElement('div');
+        body.className = 'story-body';
+        const published = document.createElement('span');
+        published.className = 'story-label';
+        const publishedDate = new Date(video.published);
+        published.textContent = Number.isNaN(publishedDate.getTime())
+          ? 'LATEST UPLOAD' : dateFormatter.format(publishedDate);
+        const title = document.createElement('h3');
+        title.textContent = video.title;
+        const watch = document.createElement('a');
+        watch.href = poster.href;
+        watch.target = '_blank';
+        watch.rel = 'noopener noreferrer';
+        watch.textContent = container.dataset.watchLabel || 'Watch on YouTube ↗';
+        body.append(published, title, watch);
+        article.append(poster, body);
+        fragment.append(article);
+      }
+
+      grid.replaceChildren(fragment);
+      status.hidden = true;
+    })
+    .catch(displayError);
 })();
