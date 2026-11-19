@@ -25,7 +25,7 @@ VIDEO_ID = re.compile(r"[A-Za-z0-9_-]{11}\Z")
 def parse_feed(xml_content):
     feed = ET.fromstring(xml_content)
     actual_id = feed.findtext("yt:channelId", namespaces=NAMESPACES)
-    if actual_id != CHANNEL_ID:
+    if actual_id not in (CHANNEL_ID, CHANNEL_ID[2:]):
         raise ValueError(f"Wrong YouTube channel ID in feed: {actual_id!r}")
 
     author_uri = feed.findtext("a:author/a:uri", namespaces=NAMESPACES)
@@ -36,7 +36,7 @@ def parse_feed(xml_content):
     seen_ids = set()
     for entry in feed.findall("a:entry", NAMESPACES):
         entry_channel = entry.findtext("yt:channelId", namespaces=NAMESPACES)
-        if entry_channel != CHANNEL_ID:
+        if entry_channel not in (CHANNEL_ID, CHANNEL_ID[2:]):
             raise ValueError("A video in the feed belongs to another channel")
         vid = entry.findtext("yt:videoId", namespaces=NAMESPACES) or ""
         title = (entry.findtext("a:title", namespaces=NAMESPACES) or "").strip()
