@@ -10,6 +10,7 @@ on:
       - ".github/workflows/latest-youtube.yml"
       - "scripts/update_latest_videos.py"
       - "tests/test_latest_youtube.py"
+      - "index.html"
 
 permissions:
   contents: write
