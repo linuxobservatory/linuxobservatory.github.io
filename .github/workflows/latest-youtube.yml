@@ -1,0 +1,43 @@
+name: Refresh latest Linux Observatory videos
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/latest-youtube.yml"
+      - "scripts/update_latest_videos.py"
+      - "tests/test_latest_youtube.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: latest-youtube-videos
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test channel ownership validation
+        run: python3 -m unittest discover -s tests -p test_latest_youtube.py
+      - name: Fetch and verify six newest uploads
+        run: python3 scripts/update_latest_videos.py
+      - name: Publish only verified updates
+        run: |
+          if git diff --quiet -- data/latest-videos.json; then
+            echo "No changes to publish"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/latest-videos.json
+          git diff --cached --quiet || (git commit -m "Update verified Linux Observatory videos" && git push)
