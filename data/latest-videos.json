@@ -1,8 +1,15 @@
 {
   "channel_id": "UCNq7pDavJRTEjg3AOdcuMAg",
   "channel": "https://www.youtube.com/@LinuxObservatory",
-  "updated_at": "2026-11-20T06:50:08.223939+00:00",
+  "updated_at": "2026-11-21T17:22:08.740971+00:00",
   "videos": [
+    {
+      "id": "R_F3jgrpans",
+      "title": "Persona 5: The Phantom X (Free-To-Play) On Fedora 45 | Into the Metaverse with Proton-GE 11.12",
+      "published": "2026-11-21T16:35:27+00:00",
+      "url": "https://www.youtube.com/watch?v=R_F3jgrpans",
+      "thumbnail": "https://i.ytimg.com/vi/R_F3jgrpans/hqdefault.jpg"
+    },
     {
       "id": "t5i0patbzNQ",
       "title": "KORRIDOR on Fedora 45 | How Long Can I Hold the Catacombs?",
@@ -37,13 +44,6 @@
       "published": "2026-11-19T19:50:19+00:00",
       "url": "https://www.youtube.com/watch?v=_nQ3lV_QPVQ",
       "thumbnail": "https://i.ytimg.com/vi/_nQ3lV_QPVQ/hqdefault.jpg"
-    },
-    {
-      "id": "oQ1H5GFFNM0",
-      "title": "Space Marine 2 on Fedora 45 | Can the Frame Rate Survive the Tyranid Swarm?",
-      "published": "2026-11-18T18:54:17+00:00",
-      "url": "https://www.youtube.com/watch?v=oQ1H5GFFNM0",
-      "thumbnail": "https://i.ytimg.com/vi/oQ1H5GFFNM0/hqdefault.jpg"
     }
   ]
 }
