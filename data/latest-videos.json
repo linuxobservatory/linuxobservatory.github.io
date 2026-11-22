@@ -1,8 +1,29 @@
 {
   "channel_id": "UCNq7pDavJRTEjg3AOdcuMAg",
   "channel": "https://www.youtube.com/@LinuxObservatory",
-  "updated_at": "2026-11-21T17:22:08.740971+00:00",
+  "updated_at": "2026-11-22T05:42:21.814381+00:00",
   "videos": [
+    {
+      "id": "UiA9Y9YlpWM",
+      "title": "Horde Below | Can My Defenses Outlast the Zombie Swarm? (Fedora 45 + Proton-GE 11-12)",
+      "published": "2026-11-22T05:38:31+00:00",
+      "url": "https://www.youtube.com/watch?v=UiA9Y9YlpWM",
+      "thumbnail": "https://i.ytimg.com/vi/UiA9Y9YlpWM/hqdefault.jpg"
+    },
+    {
+      "id": "efNKokj3SY4",
+      "title": "100,000 Tickets | How Far Can One Coin Get Me? (Fedora 45 + Proton-GE 11-12)",
+      "published": "2026-11-22T05:32:16+00:00",
+      "url": "https://www.youtube.com/watch?v=efNKokj3SY4",
+      "thumbnail": "https://i.ytimg.com/vi/efNKokj3SY4/hqdefault.jpg"
+    },
+    {
+      "id": "9OaWbzRaC0U",
+      "title": "IT THINKS! Can I Build a GPU from Logic Gates? | Fedora 45 + Proton-GE 11-12 (Linux Native)",
+      "published": "2026-11-22T04:57:16+00:00",
+      "url": "https://www.youtube.com/watch?v=9OaWbzRaC0U",
+      "thumbnail": "https://i.ytimg.com/vi/9OaWbzRaC0U/hqdefault.jpg"
+    },
     {
       "id": "R_F3jgrpans",
       "title": "Persona 5: The Phantom X (Free-To-Play) On Fedora 45 | Into the Metaverse with Proton-GE 11.12",
@@ -23,27 +44,6 @@
       "published": "2026-11-20T06:13:04+00:00",
       "url": "https://www.youtube.com/watch?v=o2uKU9kgrN4",
       "thumbnail": "https://i.ytimg.com/vi/o2uKU9kgrN4/hqdefault.jpg"
-    },
-    {
-      "id": "t_VUMFv5rsg",
-      "title": "Voxmons on Fedora 45 | Hatching a Voxel Army with Proton | Free-To-Play",
-      "published": "2026-11-19T20:00:14+00:00",
-      "url": "https://www.youtube.com/watch?v=t_VUMFv5rsg",
-      "thumbnail": "https://i.ytimg.com/vi/t_VUMFv5rsg/hqdefault.jpg"
-    },
-    {
-      "id": "NE653_thWQw",
-      "title": "Milki Delivery on Fedora 45 | A Cozy Milk Run on Native Linux",
-      "published": "2026-11-19T19:51:42+00:00",
-      "url": "https://www.youtube.com/watch?v=NE653_thWQw",
-      "thumbnail": "https://i.ytimg.com/vi/NE653_thWQw/hqdefault.jpg"
-    },
-    {
-      "id": "_nQ3lV_QPVQ",
-      "title": "All Army Attack on Fedora 45 | How Many Critters Can Fit on One Screen?",
-      "published": "2026-11-19T19:50:19+00:00",
-      "url": "https://www.youtube.com/watch?v=_nQ3lV_QPVQ",
-      "thumbnail": "https://i.ytimg.com/vi/_nQ3lV_QPVQ/hqdefault.jpg"
     }
   ]
 }
