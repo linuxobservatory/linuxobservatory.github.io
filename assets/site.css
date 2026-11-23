@@ -252,3 +252,10 @@ body:has(#obs-search) .page-intro + .section {padding-top:0}
   .latest-videos-section .clip-play {display:none}
 }
 @media(prefers-reduced-motion:reduce){html {scroll-behavior:auto}}
+
+.catalog-results {list-style:none;margin:1rem 0;padding:0}
+.catalog-results li {border-top:1px solid var(--line);padding:.3rem 0}
+.catalog-results a {display:inline-block;padding:.5rem 0;text-decoration-thickness:1px;text-underline-offset:.2em}
+.catalog-results .catalog-note {margin-inline-start:1rem;color:var(--red2);font-size:.9rem}
+#recording-notes {margin-top:3.5rem}
+#catalog-more[hidden] {display:none}
