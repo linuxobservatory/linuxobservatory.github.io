@@ -42,9 +42,9 @@
         const poster = document.createElement('a');
         poster.className = 'clip-poster';
         poster.href = 'https://www.youtube.com/watch?v=' + video.id;
-        poster.target = '_blank';
+        poster.tabIndex = -1;
         poster.rel = 'noopener noreferrer';
-        poster.setAttribute('aria-label', video.title + ' (YouTube, new tab)');
+        poster.setAttribute('aria-label', video.title);
 
         const thumbnail = document.createElement('img');
         thumbnail.loading = 'lazy';
@@ -67,13 +67,12 @@
         published.textContent = Number.isNaN(publishedDate.getTime())
           ? 'LATEST UPLOAD' : dateFormatter.format(publishedDate);
         const title = document.createElement('h3');
-        title.textContent = video.title;
         const watch = document.createElement('a');
         watch.href = poster.href;
-        watch.target = '_blank';
         watch.rel = 'noopener noreferrer';
-        watch.textContent = container.dataset.watchLabel || 'Watch on YouTube ↗';
-        body.append(published, title, watch);
+        watch.textContent = video.title;
+        title.replaceChildren(watch);
+        body.append(published, title);
         article.append(poster, body);
         fragment.append(article);
       }

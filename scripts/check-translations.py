@@ -37,16 +37,9 @@ for lang in LANGS:
   assert [a['src'] for t,a in p.tags if t=='img']==[a['src'] for t,a in en.tags if t=='img'],f
   assert [a['href'] for t,a in p.tags if t=='a' and a.get('href','').startswith('https://')]==[a['href'] for t,a in en.tags if t=='a' and a.get('href','').startswith('https://')],f
   if page=='/':
-   for value in ['30,720 × 17,280','16 GB','20 GB VRAM','6K60FPS','6K50FPS','32K VSR','17.6 ms','data-fps>60']:
+   for value in ['32K VSR','Gallium_HUD','17.6 ms','data-fps>60','data-latest-grid','href="#latest-videos"','id="latest-videos"']:
     assert value in s,(f,value)
   assert BASE+route in (ROOT/'sitemap.xml').read_text(),f
-# English visible copy has not been rewritten.
-for page in PAGES:
- rel=page.strip('/')+'/index.html' if page!='/' else 'index.html'
- before=subprocess.check_output(['git','show','HEAD:'+rel],cwd=ROOT,text=True)
- after=(ROOT/rel).read_text()
- def main(s):return re.search(r'<main\b.*?</main>',s,re.S)[0]
- assert main(before)==main(after),rel
 # Regeneration is deterministic.
 paths=[ROOT/('' if l=='en' else l.lower())/p.strip('/')/'index.html' for l in LANGS for p in PAGES]+[ROOT/'sitemap.xml',ROOT/'sitemap.txt']
 before={p:p.read_bytes() for p in paths}

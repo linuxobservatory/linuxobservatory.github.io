@@ -28,7 +28,7 @@ class Translate(HTMLParser):
   new=[]
   for k,v in attrs:
    if v is not None:
-    if k in ('alt','aria-label','title') or (tag=='meta' and k=='content'): v=self.value(v)
+    if k in ('alt','aria-label','title','data-watch-label','data-error-label') or (tag=='meta' and k=='content'): v=self.value(v)
     if k=='href' and v in PAGES: v=url(self.lang,v)
     if tag=='html' and k=='lang': v=self.lang
    new.append(k if v is None else k+'="'+escape(v,quote=True)+'"')
