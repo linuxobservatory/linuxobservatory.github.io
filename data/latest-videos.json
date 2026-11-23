@@ -1,8 +1,15 @@
 {
   "channel_id": "UCNq7pDavJRTEjg3AOdcuMAg",
   "channel": "https://www.youtube.com/@LinuxObservatory",
-  "updated_at": "2026-11-22T05:42:21.814381+00:00",
+  "updated_at": "2026-11-23T07:59:13.478181+00:00",
   "videos": [
+    {
+      "id": "87IfVdIXGFE",
+      "title": "Z’s Robot Wars Return in 3D! | OpenZ on Fedora 45 with MangoHud",
+      "published": "2026-11-23T07:01:58+00:00",
+      "url": "https://www.youtube.com/watch?v=87IfVdIXGFE",
+      "thumbnail": "https://i.ytimg.com/vi/87IfVdIXGFE/hqdefault.jpg"
+    },
     {
       "id": "UiA9Y9YlpWM",
       "title": "Horde Below | Can My Defenses Outlast the Zombie Swarm? (Fedora 45 + Proton-GE 11-12)",
@@ -37,13 +44,6 @@
       "published": "2026-11-20T06:15:03+00:00",
       "url": "https://www.youtube.com/watch?v=t5i0patbzNQ",
       "thumbnail": "https://i.ytimg.com/vi/t5i0patbzNQ/hqdefault.jpg"
-    },
-    {
-      "id": "o2uKU9kgrN4",
-      "title": "Graveyard Orbit on Fedora 45 | One Tiny Ship, a Galaxy of Wrecks",
-      "published": "2026-11-20T06:13:04+00:00",
-      "url": "https://www.youtube.com/watch?v=o2uKU9kgrN4",
-      "thumbnail": "https://i.ytimg.com/vi/o2uKU9kgrN4/hqdefault.jpg"
     }
   ]
 }
