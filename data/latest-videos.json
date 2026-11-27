@@ -1,8 +1,15 @@
 {
   "channel_id": "UCNq7pDavJRTEjg3AOdcuMAg",
   "channel": "https://www.youtube.com/@LinuxObservatory",
-  "updated_at": "2026-11-27T11:28:52.460439+00:00",
+  "updated_at": "2026-11-27T15:05:13.360842+00:00",
   "videos": [
+    {
+      "id": "VwX7SvAkut8",
+      "title": "Bio Inc. Total Defense on Linux | Tower Defense in Your Bloodstream | Fedora 45 + Proton-GE 11-14",
+      "published": "2026-11-27T14:12:02+00:00",
+      "url": "https://www.youtube.com/watch?v=VwX7SvAkut8",
+      "thumbnail": "https://i.ytimg.com/vi/VwX7SvAkut8/hqdefault.jpg"
+    },
     {
       "id": "VFDjHfeClH4",
       "title": "HUNGER on Linux | Surviving the Plague on Fedora 45 with Proton-GE 11-14",
@@ -37,13 +44,6 @@
       "published": "2026-11-22T05:32:16+00:00",
       "url": "https://www.youtube.com/watch?v=efNKokj3SY4",
       "thumbnail": "https://i.ytimg.com/vi/efNKokj3SY4/hqdefault.jpg"
-    },
-    {
-      "id": "9OaWbzRaC0U",
-      "title": "IT THINKS! Can I Build a GPU from Logic Gates? | Fedora 45 + Proton-GE 11-12 (Linux Native)",
-      "published": "2026-11-22T04:57:16+00:00",
-      "url": "https://www.youtube.com/watch?v=9OaWbzRaC0U",
-      "thumbnail": "https://i.ytimg.com/vi/9OaWbzRaC0U/hqdefault.jpg"
     }
   ]
 }
