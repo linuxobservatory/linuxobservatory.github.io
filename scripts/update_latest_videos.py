@@ -4,8 +4,11 @@
 Channel identity is fixed. Never resolve the ID from an arbitrary page or search
 result: that previously displayed videos from another creator.
 """
+import http.client
 import json
 import re
+import time
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -60,16 +63,40 @@ def parse_feed(xml_content):
     return videos[:6]
 
 
-def main():
+def fetch_videos():
     req = urllib.request.Request(
         FEED_URL,
         headers={"User-Agent": "Mozilla/5.0 (Linux Observatory site feed updater)"},
     )
-    with urllib.request.urlopen(req, timeout=30) as response:
-        videos = parse_feed(response.read())
+    for delay in (5, 15, 45, None):
+        try:
+            with urllib.request.urlopen(req, timeout=20) as response:
+                return parse_feed(response.read())
+        except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead) as error:
+            if isinstance(error, urllib.error.HTTPError) and error.code not in (408, 429, 500, 502, 503, 504):
+                raise
+            if delay is None:
+                raise ConnectionError(f"YouTube feed temporarily unavailable: {error}") from error
+            print(f"Feed request failed ({error}). Retrying in {delay}s.", flush=True)
+            time.sleep(delay)
 
-    # Do not touch the last known-good data if the feed fails validation.
+
+def main():
     existing = json.loads(DEST.read_text(encoding="utf-8")) if DEST.exists() else {}
+    try:
+        videos = fetch_videos()
+    except ConnectionError as error:
+        cached = existing.get("videos", [])
+        if (existing.get("channel_id") != CHANNEL_ID or existing.get("channel") != CHANNEL_URL
+                or len(cached) != 6 or len({v["id"] for v in cached}) != 6
+                or not all(VIDEO_ID.fullmatch(v["id"]) and v.get("title") and v.get("published")
+                           and v.get("url") == f"https://www.youtube.com/watch?v={v['id']}"
+                           and v.get("thumbnail") == f"https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg"
+                           for v in cached)):
+            raise
+        print(f"::warning::{error}. Keeping the previous six videos until the next refresh.")
+        return
+
     if existing.get("channel_id") == CHANNEL_ID and existing.get("videos") == videos:
         print("No new videos to publish.")
         return

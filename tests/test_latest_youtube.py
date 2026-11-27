@@ -1,5 +1,9 @@
 import importlib.util
+import io
+import json
+import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 spec = importlib.util.spec_from_file_location(
@@ -49,6 +53,32 @@ class FeedValidationTests(unittest.TestCase):
     def test_foreign_video_rejected(self):
         with self.assertRaises(ValueError):
             mod.parse_feed(fixture(bad_entry_id="UC0000000000000000000000"))
+
+
+class FeedOutageTests(unittest.TestCase):
+    def unavailable(self):
+        return mod.urllib.error.HTTPError(mod.FEED_URL, 503, "Unavailable", {}, None)
+
+    @patch.object(mod.time, "sleep")
+    @patch.object(mod.urllib.request, "urlopen")
+    def test_503_then_verified_feed(self, fetch, sleep):
+        fetch.side_effect = [self.unavailable(), io.BytesIO(fixture())]
+        self.assertEqual(mod.fetch_videos(), mod.parse_feed(fixture()))
+        sleep.assert_called_once_with(5)
+
+    @patch.object(mod.time, "sleep")
+    @patch.object(mod.urllib.request, "urlopen")
+    def test_persistent_503_preserves_cache_and_requires_valid_data(self, fetch, sleep):
+        fetch.side_effect = self.unavailable()
+        with tempfile.TemporaryDirectory() as tmp, patch.object(mod, "DEST", Path(tmp) / "latest.json"):
+            with self.assertRaises(ConnectionError):
+                mod.main()
+            cache = json.dumps({"channel_id": mod.CHANNEL_ID, "channel": mod.CHANNEL_URL,
+                                "videos": mod.parse_feed(fixture())})
+            mod.DEST.write_text(cache)
+            mod.main()
+            self.assertEqual(mod.DEST.read_text(), cache)
+            self.assertEqual(fetch.call_count, 8)
 
 
 if __name__ == "__main__":
