@@ -1,8 +1,15 @@
 {
   "channel_id": "UCNq7pDavJRTEjg3AOdcuMAg",
   "channel": "https://www.youtube.com/@LinuxObservatory",
-  "updated_at": "2026-11-27T15:05:13.360842+00:00",
+  "updated_at": "2026-11-27T18:25:22.398803+00:00",
   "videos": [
+    {
+      "id": "cV0rlsVq-TI",
+      "title": "Warhammer 40K: Dawn of War IV Army Painter on Linux | Pick Your Chapter Colors | Fedora 45",
+      "published": "2026-11-27T17:42:04+00:00",
+      "url": "https://www.youtube.com/watch?v=cV0rlsVq-TI",
+      "thumbnail": "https://i.ytimg.com/vi/cV0rlsVq-TI/hqdefault.jpg"
+    },
     {
       "id": "VwX7SvAkut8",
       "title": "Bio Inc. Total Defense on Linux | Tower Defense in Your Bloodstream | Fedora 45 + Proton-GE 11-14",
@@ -37,13 +44,6 @@
       "published": "2026-11-22T05:38:31+00:00",
       "url": "https://www.youtube.com/watch?v=UiA9Y9YlpWM",
       "thumbnail": "https://i.ytimg.com/vi/UiA9Y9YlpWM/hqdefault.jpg"
-    },
-    {
-      "id": "efNKokj3SY4",
-      "title": "100,000 Tickets | How Far Can One Coin Get Me? (Fedora 45 + Proton-GE 11-12)",
-      "published": "2026-11-22T05:32:16+00:00",
-      "url": "https://www.youtube.com/watch?v=efNKokj3SY4",
-      "thumbnail": "https://i.ytimg.com/vi/efNKokj3SY4/hqdefault.jpg"
     }
   ]
 }
