@@ -1,8 +1,15 @@
 {
   "channel_id": "UCNq7pDavJRTEjg3AOdcuMAg",
   "channel": "https://www.youtube.com/@LinuxObservatory",
-  "updated_at": "2026-11-27T08:03:53.947637+00:00",
+  "updated_at": "2026-11-27T11:28:52.460439+00:00",
   "videos": [
+    {
+      "id": "VFDjHfeClH4",
+      "title": "HUNGER on Linux | Surviving the Plague on Fedora 45 with Proton-GE 11-14",
+      "published": "2026-11-27T10:35:33+00:00",
+      "url": "https://www.youtube.com/watch?v=VFDjHfeClH4",
+      "thumbnail": "https://i.ytimg.com/vi/VFDjHfeClH4/hqdefault.jpg"
+    },
     {
       "id": "jkSLWpFC2l0",
       "title": "American Truck Simulator on Fedora 45 | Taking the Native Linux Build for a Drive",
@@ -37,13 +44,6 @@
       "published": "2026-11-22T04:57:16+00:00",
       "url": "https://www.youtube.com/watch?v=9OaWbzRaC0U",
       "thumbnail": "https://i.ytimg.com/vi/9OaWbzRaC0U/hqdefault.jpg"
-    },
-    {
-      "id": "R_F3jgrpans",
-      "title": "Persona 5: The Phantom X (Free-To-Play) On Fedora 45 | Into the Metaverse with Proton-GE 11.12",
-      "published": "2026-11-21T16:35:27+00:00",
-      "url": "https://www.youtube.com/watch?v=R_F3jgrpans",
-      "thumbnail": "https://i.ytimg.com/vi/R_F3jgrpans/hqdefault.jpg"
     }
   ]
 }
